@@ -62,36 +62,29 @@ pass
 目录结构和代码量统计参考[此处](./document/README.MD)  
 
 ## 致谢   
-感谢 G 小姐[@Sabiner](https://github.com/Sabiner)的鼓励才会产生动手写个人博客的想法。一切缘起，都要从丘处机路过牛家村的那个下午说起……
+由于本仓库是在fork这位博主：[@imoyao](https://github.com/imoyao)
+他的的这个仓库：[idealyard](https://github.com/imoyao/idealyard)
 
-![不试怎么知道做不到呢？](./document/src/img_20190910153859.jpg)
+感谢他！
 
-同时感谢[@LeiWong](https://github.com/LeiWong)在开发中遇到问题帮助寻找`bug`并解决问题时付出的时间。 
-  
+但由于他叨逼叨的在肉麻的感谢某位妹子，我在这不得已改了这个致谢，毕竟我敬爱的媳妇儿[@crystal](https://github.com/Anxiaozhuang)
+生气起来可能是一个毁天灭地的效果。嗯，感谢她。
+
+
 ---
-> A human being should be able to change a diaper, plan an invasion, butcher a hog, conn a ship, design a building, write a sonnet, balance accounts, build a wall, set a bone, comfort the dying, take orders, give orders, cooperate, act alone, solve equations, analyze a new problem, pitch manure, program a computer, cook a tasty meal, fight efficiently, die gallantly. Specialization is for insects.
+> Она даётся ему один раз, и прожить её надо так, чтобы не было мучительно больно за бесцельно прожитые годы, чтобы не жёг позор за подленькое и мелочное прошлое и чтобы, умирая, смог сказатывся жизнь и все силы были отданы самому прекрасному в мире - борьбе за освобождение человечества.
 >
->一个人应该能够换尿布，
-策划战争，
-杀猪，
-开船，
-设计房子，
-写十四行诗，
-结算账户，
-砌墙，
-接脱臼的骨头，
-安慰濒死的人，
-服从命令，
-发布命令，
-携手合作，
-独立行动，
-解数学方程，
-分析新问题，
-铲粪，
-电脑编程，
-做出可口的饭，
-善打架，
-勇敢地死去。
-只有昆虫才专业化。
+>人最宝贵的东西是生命.
+>生命对于我们只有一次.
+>一个人的生命应当这样度过：
+>当他回首往事的时候,
+>也不因虚度年华而悔恨,
+>也不因碌碌无为而羞愧——这样,
+>在临死的时候,它能够说：
+>“我整个的生命和全部精力,
+>都已献给世界上最壮丽的事业
+>——为人类的解放而斗争.”
+>
 
--- 罗伯特·安森·海因莱因  《时间足够你爱》
+-- 《钢铁是怎样炼成的》 保尔·柯察金
+
