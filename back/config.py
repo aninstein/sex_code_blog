@@ -35,7 +35,7 @@ class Config:
     MAIL_USE_SSL = True
     MAIL_USERNAME = os.getenv('MAIL_USERNAME')
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
-    MAIL_DEFAULT_SENDER = ('别院牧志', os.getenv('MAIL_USERNAME'))
+    MAIL_DEFAULT_SENDER = ('慈祥的昌老师', os.getenv('MAIL_USERNAME'))
     # redis 配置
     # REDIS_URL = "redis://:password@localhost:6379/0"
     REDIS_URL = "redis://localhost:6379/0"
@@ -57,20 +57,20 @@ class MySQLConfig:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    database = 'iyblog_dev'
+    database = 'sex_code_blog_dev'
     SQLALCHEMY_DATABASE_URI = f'mysql+pymysql://{MySQLConfig.MYSQL_USERNAME}:{MySQLConfig.MYSQL_PASSWORD}' \
                               f'@{MySQLConfig.MYSQL_HOST}/{database}?charset={MySQLConfig.MYSQL_CHARSET}'
 
 
 class TestingConfig(Config):
     TESTING = True
-    database = 'iyblog_test'
+    database = 'sex_code_blog_test'
     SQLALCHEMY_DATABASE_URI = f'mysql+pymysql://{MySQLConfig.MYSQL_USERNAME}:{MySQLConfig.MYSQL_PASSWORD}' \
                               f'@{MySQLConfig.MYSQL_HOST}/{database}?charset={MySQLConfig.MYSQL_CHARSET}'
 
 
 class ProductionConfig(Config):
-    database = 'iyblog_product'
+    database = 'sex_code_blog_product'
     SQLALCHEMY_DATABASE_URI = f'mysql+pymysql://{MySQLConfig.MYSQL_USERNAME}:{MySQLConfig.MYSQL_PASSWORD}' \
                               f'@{MySQLConfig.MYSQL_HOST}/{database}?charset={MySQLConfig.MYSQL_CHARSET}'
 

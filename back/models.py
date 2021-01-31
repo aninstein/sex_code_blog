@@ -22,7 +22,7 @@ class User(db.Model):
     """
     用户表结构
     """
-    __tablename__ = 'iy_user'
+    __tablename__ = 'blog_user'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True, comment='主键')
     # 因为有用户名登录选项，所以此处必须唯一
@@ -90,9 +90,9 @@ class User(db.Model):
 
 # Create M2M table
 # 标签和文章为多对多关系，创建中间表
-posts_tags_table = db.Table('iy_post_tags', db.Model.metadata,
-                            db.Column('post_id', db.Integer, db.ForeignKey('iy_article.post_id')),
-                            db.Column('tag_id', db.Integer, db.ForeignKey('iy_tag.id')),
+posts_tags_table = db.Table('blog_post_tags', db.Model.metadata,
+                            db.Column('post_id', db.Integer, db.ForeignKey('blog_article.post_id')),
+                            db.Column('tag_id', db.Integer, db.ForeignKey('blog_tag.id')),
                             db.PrimaryKeyConstraint('tag_id', 'post_id')
                             )
 
@@ -101,17 +101,17 @@ class Article(db.Model):
     """
     文章表结构
     """
-    __tablename__ = 'iy_article'
+    __tablename__ = 'blog_article'
     __table_args__ = {'extend_existing': True}
     post_id = db.Column(db.Integer, primary_key=True, comment='主键')
     title = db.Column(db.String(64), comment='文章标题')
     identifier = db.Column(db.Integer, unique=True, comment='文章标识码')
     slug = db.Column(db.String(128), unique=True, comment='文章索引字符')
-    author_id = db.Column(db.Integer, db.ForeignKey('iy_user.id'), comment='作者id')
-    body_id = db.Column(db.Integer, db.ForeignKey('iy_article_body.id'), unique=True, comment='文章结构体id')
+    author_id = db.Column(db.Integer, db.ForeignKey('blog_user.id'), comment='作者id')
+    body_id = db.Column(db.Integer, db.ForeignKey('blog_article_body.id'), unique=True, comment='文章结构体id')
     view_counts = db.Column(db.Integer, server_default='0', comment='文章阅读数')
     weight = db.Column(db.Integer, comment='置顶功能')
-    category_id = db.Column(db.Integer, db.ForeignKey('iy_category.id'), comment='分类')
+    category_id = db.Column(db.Integer, db.ForeignKey('blog_category.id'), comment='分类')
     create_date = db.Column(db.DateTime(), default=datetime.utcnow, comment='文章创建时间')
     # 注意，此处默认是标准时区，东八区需要修改配置，不修改的话显示会有差异
     update_date = db.Column(db.TIMESTAMP, server_default=db.text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'),      # 注意，此处默认是标准时区，东八区需要修改配置，不修改的话显示会有差距
@@ -155,7 +155,7 @@ class Tag(db.Model):
     """
     标签 表结构
     """
-    __tablename__ = 'iy_tag'
+    __tablename__ = 'blog_tag'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True, comment='主键')
     tag_name = db.Column(db.String(24), comment='标签名称')
@@ -174,7 +174,7 @@ class ArticleBody(db.Model):
     """
     文章结构体 表结构
     """
-    __tablename__ = 'iy_article_body'
+    __tablename__ = 'blog_article_body'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True, comment='主键')
     content_html = db.Column(db.Text, comment='文章的html')
@@ -190,7 +190,7 @@ class Category(db.Model):
     """
     分类 表结构
     """
-    __tablename__ = 'iy_category'
+    __tablename__ = 'blog_category'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True, comment='主键')
     category_name = db.Column(db.String(32), unique=True, comment='分类名称')
@@ -205,7 +205,7 @@ class Comment(db.Model):
     """
     评论表，暂时只建表，不未开发相应功能
     """
-    __tablename__ = 'iy_comment'
+    __tablename__ = 'blog_comment'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     author = db.Column(db.String(30), comment='评论者名称')
@@ -215,9 +215,9 @@ class Comment(db.Model):
     from_admin = db.Column(db.Boolean, default=False, comment='来自作者')
     reviewed = db.Column(db.Boolean, default=False, comment='评论审核')
     create_timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True, comment='评论时间')
-    commented_post_id = db.Column(db.Integer, db.ForeignKey('iy_article.post_id'), comment='评论文章id')
+    commented_post_id = db.Column(db.Integer, db.ForeignKey('blog_article.post_id'), comment='评论文章id')
     # 被回复id
-    replied_id = db.Column(db.Integer, db.ForeignKey('iy_comment.id'), comment='回复id')
+    replied_id = db.Column(db.Integer, db.ForeignKey('blog_comment.id'), comment='回复id')
     articles = db.relationship('Article', back_populates='comments')
     # 被回复
     replied = db.relationship('Comment', back_populates='replies', remote_side=[id])
@@ -229,7 +229,7 @@ class SysLog(db.Model):
     """
     操作日志 表结构
     """
-    __tablename__ = 'iy_syslog'
+    __tablename__ = 'blog_syslog'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True, comment='主键')
     op_ip = db.Column(db.String(64), comment='操作者ip')
@@ -246,7 +246,7 @@ class Friend(db.Model):
     """
     友链 表结构
     """
-    __tablename__ = 'iy_friend'
+    __tablename__ = 'blog_friend'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True, comment='主键')
     friend_name = db.Column(db.String(64), comment='好友名称')

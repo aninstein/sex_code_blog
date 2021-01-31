@@ -32,10 +32,10 @@ BD_TRANS_API_URL = '/api/trans/vip/translate'
 # db
 DB_HOST = 'localhost'
 DB_USER = 'root'  # TODO:export this
-DB_PASSWORD = '111111'
+DB_PASSWORD = '123456'
 config_name = os.getenv('FLASK_CONFIG', 'default')
 print(config_name, '----------------config_name')
-DATABASE_NAME = 'iyblog_dev'
+DATABASE_NAME = 'sex_code_blog_dev'  # 'iyblog_dev'
 print(DATABASE_NAME, '-------DATABASE_NAME---------config_name')
 # regex
 RE_SYMBOL = r'[\,\，\.\。\?\？\:\：\'\‘\’\"\“\”\、\/\*\&\$\#\@\!\(\（\)\）\[\【\]\】\{\}\|\-"]'
